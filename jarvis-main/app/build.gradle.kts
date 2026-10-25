@@ -9,24 +9,25 @@ android {
     namespace = "com.jarvis.agent"
     compileSdk = 35
 
-    defaultConfig {
+        defaultConfig {
         applicationId = "com.jarvis.agent"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-    }
 
+        buildConfigField(
+            "String",
+            "GOOGLE_CLIENT_ID",
+            "\"${System.getenv("GOOGLE_CLIENT_ID") ?: ""}\""
+            )
+        }
     buildFeatures {
         compose = true
         buildConfig = true
     }
 
-    buildConfigField(
-        "String",
-        "GOOGLE_CLIENT_ID",
-        "\"${System.getenv("GOOGLE_CLIENT_ID") ?: ""}\""
-    )
+   
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
