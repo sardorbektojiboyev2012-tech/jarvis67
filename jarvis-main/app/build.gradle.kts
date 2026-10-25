@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -9,7 +10,7 @@ android {
     namespace = "com.jarvis.agent"
     compileSdk = 35
 
-        defaultConfig {
+    defaultConfig {
         applicationId = "com.jarvis.agent"
         minSdk = 26
         targetSdk = 35
@@ -20,14 +21,13 @@ android {
             "String",
             "GOOGLE_CLIENT_ID",
             "\"${System.getenv("GOOGLE_CLIENT_ID") ?: ""}\""
-            )
-        }
+        )
+    }
+
     buildFeatures {
         compose = true
         buildConfig = true
     }
-
-   
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
