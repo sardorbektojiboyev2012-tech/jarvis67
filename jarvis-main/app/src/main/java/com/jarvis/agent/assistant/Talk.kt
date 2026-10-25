@@ -18,7 +18,11 @@ class Talk(private val ctx: Context) {
         History.add(true, text)
         val p = pending; pending = null
         val r = if (p != null) p(text) else Commands.handle(ctx, text)
-        pending = r.next
+        val confirmAction = r.confirm
+pending = if (confirmAction == null) null else { answer: String ->
+    if (Commands.isYes(answer)) confirmAction()
+    else Reply("Bekor qildim.")
+}
         History.add(false, r.text)
         return r
     }
